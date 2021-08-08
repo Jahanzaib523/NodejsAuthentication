@@ -1,0 +1,7 @@
+{
+    "env":
+    {
+     "MONGO_ATLAS_PW": "nodejsrestapi",
+     "__dirname": "C:\\Users\\Jahanzaib Manzoor\\nodejs projects\\NodejsAuthentication\\Authentication\\Routes"
+    }
+ }
