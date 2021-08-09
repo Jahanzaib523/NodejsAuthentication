@@ -6,6 +6,7 @@ const app = express();
 
 const SignUpRoute = require('./Authentication/Routes/signup');
 const SignInRoute = require('./Authentication/Routes/signin');
+const RecoverRoute = require('./Authentication/Routes/recover');
 
 
 //Connection with MongoDB. The password is given too.
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
 //Routes which are handling requests.
 app.use('/signup', SignUpRoute);
 app.use('/signin', SignInRoute);
+app.use('/recover', RecoverRoute);
 
 //Error Handling
 app.use((req, res, next) => {

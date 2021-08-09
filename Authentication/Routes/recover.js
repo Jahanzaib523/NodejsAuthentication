@@ -5,7 +5,7 @@ const User = require('../Models/user');
 const bcrypt = require('bcrypt');
 
 router.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '/signin.html'));
+    res.sendFile(path.join(__dirname, '/recover.html'));
 });
 
 
@@ -16,24 +16,18 @@ router.post('/', (req, res, next) => {
        if(user.length <1)
        {
            return res.status(401).json({
-               message: 'Authentication Failed'
+               message: 'Incorrect User Email'
            });
        }
-       bcrypt.compare(req.body.pass, user.password, (err, result) => {
-          if(err)
-          {
-              return res.status(401).json({
-                  message: 'Authentication Failed'
-              });
-          }
-          
-          if(result)
-          {
-              return res.status(200).json({
-                  message: 'Authentication Successfull.'
-              });
-          }
-       });
+       else
+       {
+            res.status(200).json({
+                User: {
+                    email: user.email,
+                    password: user.password
+                }
+            });
+       }
    })
    .catch(err=> {
        console.log(err);
